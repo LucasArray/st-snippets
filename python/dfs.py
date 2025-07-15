@@ -1,10 +1,22 @@
-def dfs(graph, start, visited=None):
-    if visited is None:
+class Solution:
+    def dfs(self, graph, start):
         visited = set()
+        order = []
 
-    visited.add(start)
-    print(start, end=' ')
+        def _dfs_util(node):
+            visited.add(node)
+            order.append(node)
+            for neighbor in graph.get(node, []):
+                if neighbor not in visited:
+                    _dfs_util(neighbor)
+        
+        _dfs_util(start)
+        return order
 
-    for neighbor in graph[start]:
-        if neighbor not in visited:
-            dfs(graph, neighbor, visited)
+# Example usage:
+graph_data = {
+    'A': ['B', 'C'], 'B': ['D', 'E'],
+    'C': ['F'], 'D': [], 'E': ['F'], 'F': []
+}
+solver = Solution()
+print(f"DFS order: {solver.dfs(graph_data, 'A')}")
