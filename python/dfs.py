@@ -1,9 +1,3 @@
-graph = {
-    'A': ['B', 'C'],
-    'E': ['F'],
-    'F': []
-}
-
 def dfs(graph, start, visited=None):
     if visited is None:
         visited = set()
@@ -14,5 +8,3 @@ def dfs(graph, start, visited=None):
     for neighbor in graph[start]:
         if neighbor not in visited:
             dfs(graph, neighbor, visited)
-
-dfs(graph, 'A')

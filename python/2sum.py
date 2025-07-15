@@ -5,8 +5,3 @@ def two_sum(nums: list[int], target: int) -> list[int]:
         if complement in num_to_index:
             return [num_to_index[complement], i]
         num_to_index[num] = i
-
-
-nums = [2, 7, 11, 15]
-target = 9
-
